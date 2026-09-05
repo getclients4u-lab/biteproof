@@ -66,7 +66,7 @@ info-product moment.
   manual access codes
 
 **Env vars (Vercel):** `GH_TOKEN`, `GH_OWNER`, `GH_DATA_REPO=biteproof-data`,
-`ACCESS_PEPPER=biteproof-pepper-f6c0742a`, `STRIPE_WEBHOOK_SECRET`,
+`ACCESS_PEPPER=<secret, set in Vercel env>`, `STRIPE_WEBHOOK_SECRET`,
 `AGENTMAIL_API_KEY`, `BITEPROOF_MAIL_FROM=gentledesk632@agentmail.to`,
 `ADMIN_PASSWORD`.
 
