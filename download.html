@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiteProof™ — Your Downloads</title>
+<style>
+  :root { --bg:#0a1410; --panel:#10201a; --line:#1e3a2d; --txt:#eef7f1; --dim:#9db8a9; --accent:#5eead4; --good:#5eead4; --bad:#f87171; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--txt); font-family:'Segoe UI',system-ui,sans-serif; min-height:100vh; }
+  .wrap { max-width:800px; margin:0 auto; padding:40px 20px 80px; }
+  .logo { font-size:22px; font-weight:700; margin-bottom:6px; }
+  .logo span { color:var(--accent); }
+  .sub { color:var(--dim); font-size:14px; margin-bottom:32px; }
+  .gate { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:28px; margin-bottom:28px; }
+  .gate h2 { font-size:18px; margin-bottom:8px; }
+  .gate p { color:var(--dim); font-size:13px; margin-bottom:18px; }
+  input { width:100%; background:var(--bg); border:1px solid var(--line); color:var(--txt); padding:12px 14px; border-radius:8px; font-size:15px; margin-bottom:12px; }
+  .btn { background:var(--accent); color:#062a1a; border:none; padding:12px 20px; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; width:100%; }
+  .btn:hover { filter:brightness(1.1); }
+  .err { color:var(--bad); font-size:13px; margin-top:10px; min-height:18px; }
+  .locked { display:none; }
+  .files { display:grid; gap:12px; }
+  .file { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; }
+  .file h3 { font-size:15px; margin-bottom:3px; }
+  .file p { color:var(--dim); font-size:12.5px; line-height:1.45; }
+  .file .btn { width:auto; padding:9px 16px; font-size:12.5px; flex-shrink:0; }
+  .badge { display:inline-block; background:rgba(94,234,212,0.12); color:var(--good); font-size:11px; padding:2px 10px; border-radius:12px; font-weight:600; margin-bottom:6px; }
+  footer { margin-top:40px; text-align:center; color:var(--dim); font-size:12px; }
+  .start { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:16px; }
+  .start h3 { font-size:16px; margin-bottom:8px; }
+  .start ol { padding-left:20px; color:var(--dim); font-size:13.5px; line-height:1.9; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">🛡️ Bite<span>Proof</span>™</div>
+  <div class="sub">The Mosquito-Proof Home System™ — your member downloads</div>
+
+  <div id="gateBox" class="gate">
+    <h2>🔐 Unlock your downloads</h2>
+    <p>Enter the email you purchased with and your personal access code (sent in your order confirmation email).</p>
+    <input id="email" type="email" placeholder="you@email.com" autocomplete="email">
+    <input id="code" type="text" placeholder="BP-XXXXX-XXXXX" autocomplete="off">
+    <button class="btn" onclick="unlock()">Unlock →</button>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div id="memberArea" class="locked">
+    <div class="start">
+      <span class="badge">✅ Unlocked</span>
+      <h3>Start here — the 4-Ring Defense™ launch path</h3>
+      <ol>
+        <li><b>TONIGHT (20 min):</b> read the Core Guide, then walk the yard with a flashlight and count every water-holding object</li>
+        <li><b>TOMORROW (1–2 hrs):</b> run the 15-Minute Yard Audit + Standing-Water Kill List — end the nurseries</li>
+        <li><b>THIS WEEKEND (1 hr):</b> seal the house with the Home Barrier Blueprint — screens, sweeps, fans</li>
+        <li><b>GOING FORWARD:</b> print the Repellent Cheat Sheet, pack the Outing Go-Bag, run the 12-Week Season Tracker</li>
+      </ol>
+    </div>
+    <div class="files">
+      <div class="file">
+        <div><h3>🛡️ 1. The BiteProof Core Guide</h3><p>Your 4-Ring Defense™ roadmap — the record-2026 mosquito science in plain English, the 7 Rules, and the 72-hour launch sequence. Start here.</p></div>
+        <button class="btn" onclick="dl('core-guide.pdf', this)">Download</button>
+      </div>
+      <div class="file">
+        <div><h3>🔍 2. The 15-Minute Yard Audit</h3><p>The famous walkthrough: 5 zones, 60+ breeding sites to hunt, and the "7 mosquito hotels" most yards hide. Find every nursery in one pass.</p></div>
+        <button class="btn" onclick="dl('yard-audit.pdf', this)">Download</button>
+      </div>
+      <div class="file">
+        <div><h3>💧 3. The Standing-Water Kill List</h3><p>Drain. Tilt. Treat. The zone-by-zone weekly execution tool + the 10-Minute Rain Sweep that kills 80% of rain-created breeding.</p></div>
+        <button class="btn" onclick="dl('standing-water-kill-list.pdf', this)">Download</button>
+      </div>
+      <div class="file">
+        <div><h3>🧴 4. The Repellent Cheat Sheet</h3><p>The 10-second decision tree, the active-ingredient decode (DEET, picaridin, IR3535, OLE, permethrin), kid/pregnancy rules, and the myth table.</p></div>
+        <button class="btn" onclick="dl('repellent-cheat-sheet.pdf', this)">Download</button>
+      </div>
+      <div class="file">
+        <div><h3>🏠 5. The Home Barrier Blueprint</h3><p>Seal the structure in one afternoon: the screen/sweep/seal audit, the dusk door protocol, fans-as-barriers, and what NOT to buy.</p></div>
+        <button class="btn" onclick="dl('barrier-blueprint.pdf', this)">Download</button>
+      </div>
+      <div class="file">
+        <div><h3>🚑 6. The Bite Response &amp; Red-Flag Card</h3><p>The 4-step bite protocol, what a normal bite looks like vs. the specific symptoms that mean call the doctor. Includes the fridge-ready quick card.</p></div>
+        <button class="btn" onclick="dl('bite-response-card.pdf', this)">Download</button>
+      </div>
+      <div class="file">
+        <div><h3>🎒 7. The Outing &amp; Travel Playbook</h3><p>Cookouts, camping, soccer tournaments, and vacations: the every-outing go-bag checklist + 5 playbooks + the family duty roster.</p></div>
+        <button class="btn" onclick="dl('outing-playbook.pdf', this)">Download</button>
+      </div>
+      <div class="file">
+        <div><h3>📅 8. The 12-Week Season Tracker</h3><p>The 10-minutes-a-week rhythm that makes mosquito-proofing automatic — bite log, duty roster, rain-reset rule, and the escalation gear.</p></div>
+        <button class="btn" onclick="dl('season-tracker.pdf', this)">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>BiteProof™ · educational prevention content · not medical advice · follow CDC &amp; local health department guidance</footer>
+</div>
+
+<script>
+function unlock() {
+  const email = document.getElementById('email').value.trim();
+  const code = document.getElementById('code').value.trim();
+  const err = document.getElementById('err');
+  if (!email || !code) { err.textContent = 'Please enter both email and access code.'; return; }
+  fetch('/api/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, code }) })
+    .then(r => r.json())
+    .then(d => {
+      if (d.ok) {
+        sessionStorage.setItem('bp_email', email);
+        sessionStorage.setItem('bp_code', code);
+        document.getElementById('gateBox').style.display = 'none';
+        document.getElementById('memberArea').classList.remove('locked');
+        document.getElementById('memberArea').style.display = 'block';
+        err.textContent = '';
+      } else {
+        err.textContent = d.error || 'Access denied. Check your code and email.';
+      }
+    })
+    .catch(() => { err.textContent = 'Network error — try again.'; });
+}
+
+function dl(file, btn) {
+  const email = sessionStorage.getItem('bp_email');
+  const code = sessionStorage.getItem('bp_code');
+  if (!email || !code) { alert('Session expired — please unlock again.'); location.reload(); return; }
+  const orig = btn.textContent;
+  btn.textContent = '⏳ …';
+  btn.disabled = true;
+  fetch('/api/download', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, code, file }) })
+    .then(async r => {
+      if (!r.ok) { const d = await r.json().catch(() => ({})); throw new Error(d.error || 'Download failed (' + r.status + ')'); }
+      const blob = await r.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = file;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      btn.textContent = '✅ Sent';
+    })
+    .catch(e => { alert(e.message); btn.textContent = orig; })
+    .finally(() => { btn.disabled = false; setTimeout(() => { if (btn.textContent === '✅ Sent') btn.textContent = orig; }, 2500); });
+}
+
+// auto-unlock if already verified this session
+const em = sessionStorage.getItem('bp_email');
+const ec = sessionStorage.getItem('bp_code');
+if (em && ec) {
+  fetch('/api/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: em, code: ec }) })
+    .then(r => r.json())
+    .then(d => { if (d.ok) { document.getElementById('gateBox').style.display = 'none'; document.getElementById('memberArea').classList.remove('locked'); document.getElementById('memberArea').style.display = 'block'; } });
+}
+document.getElementById('code').addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
+</script>
+</body>
+</html>

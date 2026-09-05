@@ -1,0 +1,7 @@
+product/
+*.pdf
+vsl/slides/
+.creds/
+node_modules/
+.DS_Store
+.vercel
